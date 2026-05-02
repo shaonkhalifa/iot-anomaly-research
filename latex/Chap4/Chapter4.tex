@@ -1,0 +1,48 @@
+\chapter{System Implementation}
+
+\section{System Architecture}
+The system is built using a three-tier decoupled architecture to ensure scalability and maintainability.
+
+\subsection{Frontend: Angular Presentation Layer}
+The frontend is developed using Angular, providing a responsive and interactive dashboard. 
+\begin{itemize}
+    \item \textbf{Data Visualization}: Uses Chart.js to display anomaly distributions and sensor trends.
+    \item \textbf{Data Export}: Implements the SheetJS library to generate proper \texttt{.xlsx} files for offline analysis.
+    \item \textbf{State Management}: Handles file uploads and model selection dynamically.
+\end{itemize}
+
+\subsection{Backend: .NET Core Service Layer}
+The backend is built with .NET Core (C\#), serving as a robust API gateway.
+\begin{itemize}
+    \item \textbf{Request Proxying}: Receives sensor data from the frontend and forwards it to the specialized ML service.
+    \item \textbf{Typed Models}: Ensures data integrity by using strictly typed C\# classes (e.g., \texttt{PredictionResult}) for all internal data movement.
+    \item \textbf{Model Orchestration}: Manages the routing between different detection requests.
+\end{itemize}
+
+\subsection{ML Service: Python Flask Analytics Layer}
+The machine learning logic resides in a high-performance Python service using the Flask framework.
+\begin{itemize}
+    \item \textbf{Scikit-Learn Integration}: Uses the \texttt{sklearn} library for Isolation Forest, SVM, and K-Means.
+    \item \textbf{Pandas Pipeline}: Implements the 9-stage cleaning logic using the Pandas library for efficient data manipulation.
+    \item \textbf{JSON REST API}: Provides endpoints for single predictions, batch uploads, and multi-model comparisons.
+\end{itemize}
+
+\section{Key Features Implementation}
+
+\subsection{Real-time Comparison}
+A ``Compare All Models'' feature allows users to run the same dataset through all three algorithms simultaneously. This allows the user to see which models are more conservative or aggressive in their detection.
+
+\subsection{Network Delay Severity}
+The system calculates \texttt{time\_delay\_sec} and applies a severity classification in the UI:
+\begin{itemize}
+    \item \textbf{Green (Normal)}: Delay $\le 5$ seconds.
+    \item \textbf{Amber (Warning)}: Delay between 5 and 30 seconds.
+    \item \textbf{Red (Critical)}: Delay $> 30$ seconds (pulsing animation in the dashboard).
+\end{itemize}
+
+  Ensuring original IoT metadata was preserved throughout the pipeline was a key challenge. This was achieved by index-based merging of ML results with the original dataframes, allowing the dashboard to display station IDs and other relevant metadata alongside anomaly predictions.
+
+\subsection{Unified Diagnostic Dashboard}
+To improve the usability of the research findings, the system implements a unified single-page dashboard. This design ensures that all analytic components (distribution charts, time-series trends, and detailed result tables) are visible in a single view. 
+
+A key implementation detail is the \textbf{Reactive State-Persistence} logic. When a user selects a different machine learning algorithm from the dropdown, the system automatically triggers a background re-analysis without requiring a page reload. This allows for rapid qualitative comparison between models. Furthermore, a data validation layer was integrated to flag ``Future Timestamps'' and statistical outliers visually in the data table, ensuring that potential data integrity issues are identified before deep analysis.

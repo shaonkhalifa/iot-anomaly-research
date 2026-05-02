@@ -1,0 +1,34 @@
+\chapter{Literature Review}
+
+\section{Overview of IoT Data Challenges}
+Industrial IoT data is characterized by its high velocity and volume. Researchers have identified several challenges in this domain, primarily data quality and security \cite{smith2023}. Sensor data often contains missing values, duplicates, and outliers. Addressing these issues is the first step in any anomaly detection workflow, as machine learning models are highly sensitive to ``dirty'' data.
+
+\section{Machine Learning for Anomaly Detection}
+Anomaly detection (also known as outlier detection) is the process of finding patterns in data that do not conform to expected behavior. In unsupervised learning, the model is not told what is an anomaly; instead, it learns the statistical distribution of ``normal'' data and flags anything that deviates significantly.
+
+\subsection{Isolation Forest}
+The Isolation Forest algorithm \cite{liu2008} is highly effective for high-dimensional datasets. It works on the principle that anomalies are ``few and far between,'' making them easier to isolate. The algorithm calculates an anomaly score $s$ for a data point $x$ based on its average path length $E(h(x))$ in a set of trees:
+\begin{equation}
+s(x, n) = 2^{-\frac{E(h(x))}{c(n)}}
+\end{equation}
+where $c(n)$ is the average path length of unsuccessful search in a Binary Search Tree. A score close to 1 indicates a high probability of an anomaly.
+
+\subsection{One-Class SVM}
+One-Class Support Vector Machines (SVM) \cite{scholkopf2001} are used for novelty detection by finding a hyperplane that separates the data from the origin with maximum margin. The optimization problem involves minimizing:
+\begin{equation}
+\min_{w, \xi, \rho} \frac{1}{2} \|w\|^2 + \frac{1}{\nu n} \sum_{i=1}^{n} \xi_i - \rho
+\end{equation}
+where $w$ is the normal vector to the hyperplane, $\nu$ is a parameter that controls the trade-off between the margin and the number of training points outside the boundary, and $\xi_i$ are slack variables.
+
+\subsection{K-Means Clustering}
+K-Means \cite{jain2010} partitions data into $k$ clusters by minimizing the sum of squared distances between each point $x$ and the centroid $\mu_i$ of its assigned cluster $C_i$:
+\begin{equation}
+J = \sum_{i=1}^{k} \sum_{x \in C_i} \|x - \mu_i\|^2
+\end{equation}
+Anomalies are identified as points with a significantly high distance from their respective centroids.
+
+\section{Preprocessing and Outlier Handling}
+The Interquartile Range (IQR) method is a common statistical technique for identifying outliers. It calculates the range between the 25th and 75th percentiles. Any data point falling below $Q1 - 1.5 \times IQR$ or above $Q3 + 1.5 \times IQR$ is considered a statistical outlier. In the context of IoT, this is often used as a first-pass cleaning step to remove obviously erroneous sensor readings.
+
+\section{Diagnostic Metadata in IoT}
+Recent literature suggests that purely statistical analysis of sensor values is often insufficient. Including temporal metadata, such as network delay (the latency between data generation and processing), provides a more comprehensive view of system health. Network delays can sometimes mimic anomalies or indicate underlying infrastructure issues that are as important as the sensor values themselves.
