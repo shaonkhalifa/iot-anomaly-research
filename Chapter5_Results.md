@@ -21,6 +21,6 @@ Furthermore, the IQR flagging successfully identified records where the `LogFloa
 
 ## 5.4 Dashboard Utility
 The implementation of the professional dashboard significantly improved the usability of the results. Key features like the **Device ID badge** and the **Excel Export** allowed for:
-1.  **Traceability**: Quickly identifying which station (`RmsStationId`) was failing.
-2.  **Offline Analysis**: Exporting filtered anomaly lists into `.xlsx` format for management reporting.
-3.  **Visual Alerts**: The use of color-coded badges (Green/Amber/Red) allowed for "at-a-glance" status monitoring of network health.
+1.  Quickly identifying which station (`RmsStationId`) was failing.
+2.  Exporting filtered anomaly lists into `.xlsx` format for management reporting.
+3.  The use of color-coded badges (Green/Amber/Red) allowed for "at-a-glance" status monitoring of network health.

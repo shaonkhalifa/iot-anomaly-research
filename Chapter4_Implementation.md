@@ -5,21 +5,21 @@ The system is built using a three-tier decoupled architecture to ensure scalabil
 
 ### 4.1.1 Frontend: Angular Presentation Layer
 The frontend is developed using Angular, providing a responsive and interactive dashboard. 
-- **Data Visualization**: Uses Chart.js to display anomaly distributions and sensor trends.
-- **Data Export**: Implements the SheetJS library to generate proper `.xlsx` files for offline analysis.
-- **State Management**: Handles file uploads and model selection dynamically.
+- Uses Chart.js to display anomaly distributions and sensor trends.
+- Implements the SheetJS library to generate proper `.xlsx` files for offline analysis.
+- Handles file uploads and model selection dynamically.
 
 ### 4.1.2 Backend: .NET Core Service Layer
 The backend is built with .NET Core (C#), serving as a robust API gateway.
-- **Request Proxying**: Receives sensor data from the frontend and forwards it to the specialized ML service.
-- **Typed Models**: Ensures data integrity by using strictly typed C# classes (e.g., `PredictionResult`) for all internal data movement.
-- **Model Orchestration**: Manages the routing between different detection requests.
+- Receives sensor data from the frontend and forwards it to the specialized ML service.
+- Ensures data integrity by using strictly typed C# classes (e.g., `PredictionResult`) for all internal data movement.
+- Manages the routing between different detection requests.
 
 ### 4.1.3 ML Service: Python Flask Analytics Layer
 The machine learning logic resides in a high-performance Python service using the Flask framework.
-- **Scikit-Learn Integration**: Uses the `sklearn` library for Isolation Forest, SVM, and K-Means.
-- **Pandas Pipeline**: Implements the 9-stage cleaning logic using the Pandas library for efficient data manipulation.
-- **JSON REST API**: Provides endpoints for single predictions, batch uploads, and multi-model comparisons.
+- Uses the `sklearn` library for Isolation Forest, SVM, and K-Means.
+- Implements the 9-stage cleaning logic using the Pandas library for efficient data manipulation.
+- Provides endpoints for single predictions, batch uploads, and multi-model comparisons.
 
 ## 4.2 Key Features Implementation
 

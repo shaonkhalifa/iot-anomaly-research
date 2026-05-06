@@ -6,12 +6,12 @@ This research successfully developed an integrated IoT Anomaly Detection System 
 The inclusion of metadata like "Network Delay" and "Device ID" transformed the project from a purely mathematical model into a practical industrial tool. The comparative analysis across Isolation Forest, SVM, and K-Means confirmed that no single model is perfect for all scenarios, but providing a unified interface for comparison allows experts to make informed decisions.
 
 ## 6.2 Key Achievements
-- **Robust Pipeline**: Successfully handled real-world noisy data with automatic cleaning.
-- **Visual Insights**: Surfaced critical network health metrics alongside sensor values.
-- **System Portability**: Created a decoupled architecture that can easily be adapted for different sensor types.
+- Successfully handled real-world noisy data with automatic cleaning.
+- Surfaced critical network health metrics alongside sensor values.
+- Created a decoupled architecture that can easily be adapted for different sensor types.
 
-## 6.3 Future Work
-While the current system is effective for batch processing, future iterations could include:
-1.  **Streaming Integration**: Implementing Kafka or MQTT listeners for true real-time, record-by-record processing.
-2.  **Supervised Refinement**: Allowing users to "Confirm" or "Reject" anomalies in the dashboard to generate a labeled dataset for future supervised learning.
-3.  **Edge Deployment**: Deploying the detection logic directly to IoT gateways to reduce network traffic.
+## 6.3 Limitations
+While the system demonstrates significant diagnostic capability, it is not without limitations. The unsupervised models can be sensitive to high-noise datasets, potentially increasing the false-positive rate. Additionally, the system currently handles temporal dependencies indirectly through network delay, rather than using sequential modeling. Finally, the reliance on batch processing limits the system's ability to respond to anomalies in sub-second real-time environments.
+
+## 6.4 Future Work
+Looking ahead, the system could be further enhanced by incorporating supervised refinement techniques, allowing users to interactively confirm or reject detected anomalies to build higher-quality labeled datasets. Furthermore, exploring edge deployment strategies could allow for detection logic to run directly on IoT gateways, significantly reducing network traffic and latency in large-scale industrial environments.

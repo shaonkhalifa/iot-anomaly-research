@@ -26,19 +26,19 @@ One of the biggest challenges with this data is that it is highly imbalanced. In
 To ensure high data quality, a robust 9-stage cleaning and preprocessing pipeline was implemented in Python. This pipeline ensures that the machine learning models receive consistent and valid data.
 
 \begin{enumerate}
-    \item \textbf{Initial Validation}: Ensuring required columns (e.g., \texttt{LogTime}, \texttt{LogFloatValue}) exist.
-    \item \textbf{Type Conversion}: Converting timestamps to datetime objects and sensor values to appropriate numeric types.
-    \item \textbf{Missing Value Handling}: Removing or imputing rows with critical missing values.
-    \item \textbf{Duplicate Removal}: Eliminating redundant records based on unique sensor/timestamp combinations.
-    \item \textbf{Domain Validation}: Checking if values fall within realistic physical ranges (e.g., humidity between 0-100\%).
-    \item \textbf{Context-Aware IQR Outlier Flagging}: Unlike global outlier detection, this stage computes Interquartile Range (IQR) fences for each specific \texttt{LogType} group. This ensures that a temperature reading is compared only against other temperature readings, preventing false positives caused by differing scales across sensor types.
-    \item \textbf{Feature Engineering}:
+    \item Ensuring required columns (e.g., \texttt{LogTime}, \texttt{LogFloatValue}) exist.
+    \item Converting timestamps to datetime objects and sensor values to appropriate numeric types.
+    \item Removing or imputing rows with critical missing values.
+    \item Eliminating redundant records based on unique sensor/timestamp combinations.
+    \item Checking if values fall within realistic physical ranges (e.g., humidity between 0-100\%).
+    \item Unlike global outlier detection, this stage computes Interquartile Range (IQR) fences for each specific \texttt{LogType} group. This ensures that a temperature reading is compared only against other temperature readings, preventing false positives caused by differing scales across sensor types.
+    \item Feature Engineering:
     \begin{itemize}
-        \item \textbf{Time Delay Calculation}: Computing the difference between \texttt{ServerTime} and \texttt{LogTime}.
-        \item \textbf{Temporal Features}: Extracting the hour of the day to capture diurnal patterns.
+        \item Computing the difference between \texttt{ServerTime} and \texttt{LogTime}.
+        \item Extracting the hour of the day to capture diurnal patterns.
     \end{itemize}
-    \item \textbf{Normalization}: Scaling features (using StandardScaler) to ensure the models are not biased toward columns with larger numerical ranges.
-    \item \textbf{Categorical Encoding}: One-hot encoding categorical variables like \texttt{LogTypeID} to make them usable by the algorithms.
+    \item Scaling features (using StandardScaler) to ensure the models are not biased toward columns with larger numerical ranges.
+    \item One-hot encoding categorical variables like \texttt{LogTypeID} to make them usable by the algorithms.
 \end{enumerate}
 
 \section{Model Training and Selection}

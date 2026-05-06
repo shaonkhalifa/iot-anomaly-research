@@ -7,15 +7,13 @@ The inclusion of metadata like ``Network Delay'' and ``Device ID'' transformed t
 
 \section{Key Achievements}
 \begin{itemize}
-    \item \textbf{Robust Pipeline}: Successfully handled real-world noisy data with automatic cleaning.
-    \item \textbf{Visual Insights}: Surfaced critical network health metrics alongside sensor values.
-    \item \textbf{System Portability}: Created a decoupled architecture that can easily be adapted for different sensor types.
+    \item Successfully handled real-world noisy data with automatic cleaning.
+    \item Surfaced critical network health metrics alongside sensor values.
+    \item Created a decoupled architecture that can easily be adapted for different sensor types.
 \end{itemize}
 
+\section{Limitations}
+While the system demonstrates significant diagnostic capability, it is not without limitations. The unsupervised models can be sensitive to high-noise datasets, potentially increasing the false-positive rate. Additionally, the system currently handles temporal dependencies indirectly through network delay, rather than using sequential modeling. Finally, the reliance on batch processing limits the system's ability to respond to anomalies in sub-second real-time environments.
+
 \section{Future Work}
-While the current system is effective for batch processing, future iterations could include:
-\begin{enumerate}
-    \item \textbf{Streaming Integration}: Implementing Kafka or MQTT listeners for true real-time, record-by-record processing.
-    \item \textbf{Supervised Refinement}: Allowing users to ``Confirm'' or ``Reject'' anomalies in the dashboard to generate a labeled dataset for future supervised learning.
-    \item \textbf{Edge Deployment}: Deploying the detection logic directly to IoT gateways to reduce network traffic.
-\end{enumerate}
+Looking ahead, the system could be further enhanced by incorporating supervised refinement techniques, allowing users to interactively confirm or reject detected anomalies to build higher-quality labeled datasets. Furthermore, exploring edge deployment strategies could allow for detection logic to run directly on IoT gateways, significantly reducing network traffic and latency in large-scale industrial environments.

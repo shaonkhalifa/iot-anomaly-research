@@ -6,25 +6,25 @@ The system is built using a three-tier decoupled architecture to ensure scalabil
 \subsection{Frontend: Angular Presentation Layer}
 The frontend is developed using Angular, providing a responsive and interactive dashboard. 
 \begin{itemize}
-    \item \textbf{Data Visualization}: Uses Chart.js to display anomaly distributions and sensor trends.
-    \item \textbf{Data Export}: Implements the SheetJS library to generate proper \texttt{.xlsx} files for offline analysis.
-    \item \textbf{State Management}: Handles file uploads and model selection dynamically.
+    \item Uses Chart.js to display anomaly distributions and sensor trends.
+    \item Implements the SheetJS library to generate proper \texttt{.xlsx} files for offline analysis.
+    \item Handles file uploads and model selection dynamically.
 \end{itemize}
 
 \subsection{Backend: .NET Core Service Layer}
 The backend is built with .NET Core (C\#), serving as a robust API gateway.
 \begin{itemize}
-    \item \textbf{Request Proxying}: Receives sensor data from the frontend and forwards it to the specialized ML service.
-    \item \textbf{Typed Models}: Ensures data integrity by using strictly typed C\# classes (e.g., \texttt{PredictionResult}) for all internal data movement.
-    \item \textbf{Model Orchestration}: Manages the routing between different detection requests.
+    \item Receives sensor data from the frontend and forwards it to the specialized ML service.
+    \item Ensures data integrity by using strictly typed C\# classes (e.g., \texttt{PredictionResult}) for all internal data movement.
+    \item Manages the routing between different detection requests.
 \end{itemize}
 
 \subsection{ML Service: Python Flask Analytics Layer}
 The machine learning logic resides in a high-performance Python service using the Flask framework.
 \begin{itemize}
-    \item \textbf{Scikit-Learn Integration}: Uses the \texttt{sklearn} library for Isolation Forest, SVM, and K-Means.
-    \item \textbf{Pandas Pipeline}: Implements the 9-stage cleaning logic using the Pandas library for efficient data manipulation.
-    \item \textbf{JSON REST API}: Provides endpoints for single predictions, batch uploads, and multi-model comparisons.
+    \item Uses the \texttt{sklearn} library for Isolation Forest, SVM, and K-Means.
+    \item Implements the 9-stage cleaning logic using the Pandas library for efficient data manipulation.
+    \item Provides endpoints for single predictions, batch uploads, and multi-model comparisons.
 \end{itemize}
 
 \section{Key Features Implementation}

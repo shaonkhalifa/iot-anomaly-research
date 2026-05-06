@@ -14,16 +14,16 @@ Furthermore, traditional threshold-based systems (e.g., triggering an alarm if t
 The primary goal of this research is to develop a robust, end-to-end IoT Anomaly Detection System that can process raw industrial sensor data and provide actionable insights. The specific objectives are:
 
 \begin{enumerate}
-    \item \textbf{Develop a Multi-Stage Data Pipeline}: Create a 9-stage preprocessing workflow to clean, validate, and normalize raw sensor data before analysis.
-    \item \textbf{Implement Unsupervised Learning Models}: Deploy and compare three distinct machine learning algorithms---Isolation Forest \cite{liu2008}, One-Class SVM \cite{scholkopf2001}, and K-Means \cite{jain2010}---to identify anomalies.
-    \item \textbf{Surface Diagnostic Metadata}: Enhance the detection results with critical metadata such as ``Network Delay'' (the time difference between device logging and server reception) and sensor-specific warnings.
-    \item \textbf{Create a Professional Visualization Dashboard}: Build a real-time web interface for data analysts to upload datasets, visualize results, and export findings for offline reporting.
+    \item To create a 9-stage preprocessing workflow to clean, validate, and normalize raw sensor data before analysis.
+    \item To implement and compare three distinct machine learning algorithms---Isolation Forest \cite{liu2008}, One-Class SVM \cite{scholkopf2001}, and K-Means \cite{jain2010}---to identify anomalies.
+    \item To enhance the detection results with critical metadata such as ``Network Delay'' (the time difference between device logging and server reception) and sensor-specific warnings.
+    \item To create a professional visualization dashboard for data analysts to upload datasets, visualize results, and export findings for offline reporting.
 \end{enumerate}
 
 \section{Scope of the Work}
 This project focuses on unsupervised anomaly detection using historical and real-time batches of sensor data. The system is designed as a three-tier architecture:
 \begin{itemize}
-    \item \textbf{Data Layer}: Processing CSV and Excel files containing industrial sensor readings.
-    \item \textbf{Service Layer}: A .NET backend for orchestration and a Python-based machine learning service for inference.
-    \item \textbf{Presentation Layer}: An Angular-based frontend for interactive data exploration.
+    \item Processing CSV and Excel files containing industrial sensor readings.
+    \item A .NET backend for orchestration and a Python-based machine learning service for inference.
+    \item An Angular-based frontend for interactive data exploration.
 \end{itemize}
